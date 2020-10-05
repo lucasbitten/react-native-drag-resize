@@ -103,6 +103,7 @@ export class Connector extends Component {
     return (
       <View
         style={{
+          borderRadius: 300,
           position: 'absolute',
           left: x,
           top: y,
