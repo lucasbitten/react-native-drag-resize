@@ -98,12 +98,16 @@ export class Connector extends Component {
       x,
       y,
       size,
+      radio,
+      color,
+      zPos,
     } = this.props;
 
     return (
       <View
         style={{
-          borderRadius: 300,
+          zIndex: zPos,
+          borderRadius: radio,
           position: 'absolute',
           left: x,
           top: y,
@@ -111,7 +115,7 @@ export class Connector extends Component {
           height: size,
           borderWidth: 2,
           borderColor: 'black',
-          backgroundColor: 'white'
+          backgroundColor: color
         }}
         {...this._panResponder.panHandlers}
       />
@@ -122,7 +126,10 @@ export class Connector extends Component {
 Connector.propTypes = {
   x: PropTypes.number,
   y: PropTypes.number,
+  radio: PropTypes.number,
   size: PropTypes.number,
+  color: PropTypes.color,
+  zPos: PropTypes.number,
   onStart: PropTypes.func.isRequired,
   onMove: PropTypes.func.isRequired,
   onEnd: PropTypes.func.isRequired,

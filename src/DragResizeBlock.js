@@ -664,7 +664,24 @@ export class DragResizeBlock extends Component {
 
     return connectors.map((connectorType) => {
       return (
+        connectorType == 'c' ?         
         <Connector
+          zPos={0}
+          color={"transparent"}
+          radio={0}
+          key={connectorType}
+          type={connectorType}
+          size={"100%"}
+          x={CONNECTOR_SIZE/2}
+          y={CONNECTOR_SIZE/2}
+          onStart={this.connectorsMap[connectorType].onStart}
+          onMove={this.connectorsMap[connectorType].onMove}
+          onEnd={this.connectorsMap[connectorType].onEnd}
+        />:
+        <Connector
+          zPos={1}
+          color={"white"}
+          radio={500}
           key={connectorType}
           type={connectorType}
           size={CONNECTOR_SIZE}
