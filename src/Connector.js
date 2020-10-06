@@ -127,7 +127,10 @@ Connector.propTypes = {
   x: PropTypes.number,
   y: PropTypes.number,
   radio: PropTypes.number,
-  size: PropTypes.number,
+  size: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]),
   color: PropTypes.color,
   zPos: PropTypes.number,
   onStart: PropTypes.func.isRequired,
