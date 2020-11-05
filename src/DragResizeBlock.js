@@ -269,6 +269,8 @@ export class DragResizeBlock extends Component {
         onResize([
           this.state.x,
           this.state.y,
+          this.state.w,
+          this.state.h,
         ]);
       }
 
@@ -304,6 +306,8 @@ export class DragResizeBlock extends Component {
         onResize([
           this.state.x,
           this.state.y,
+          this.state.w,
+          this.state.h,
         ]);
       }
 
@@ -347,6 +351,8 @@ export class DragResizeBlock extends Component {
         onResize([
           this.state.x,
           this.state.y,
+          this.state.w,
+          this.state.h,
         ]);
       }
 
@@ -380,6 +386,8 @@ export class DragResizeBlock extends Component {
         onResize([
           this.state.x,
           this.state.y,
+          this.state.w,
+          this.state.h,
         ]);
       }
 
@@ -421,6 +429,8 @@ export class DragResizeBlock extends Component {
         onResize([
           this.state.x,
           this.state.y,
+          this.state.w,
+          this.state.h,
         ]);
       }
 
@@ -454,6 +464,8 @@ export class DragResizeBlock extends Component {
         onResize([
           this.state.x,
           this.state.y,
+          this.state.w,
+          this.state.h,
         ]);
       }
 
@@ -497,6 +509,8 @@ export class DragResizeBlock extends Component {
         onResize([
           this.state.x,
           this.state.y,
+          this.state.w,
+          this.state.h,
         ]);
       }
 
@@ -532,6 +546,8 @@ export class DragResizeBlock extends Component {
         onResize([
           this.state.x,
           this.state.y,
+          this.state.w,
+          this.state.h,
         ]);
       }
 
@@ -625,6 +641,8 @@ export class DragResizeBlock extends Component {
         onDrag([
           this.state.x,
           this.state.y,
+          this.state.w,
+          this.state.h,
         ]);
       }
 
