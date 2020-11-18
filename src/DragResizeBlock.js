@@ -18,6 +18,8 @@ import {
   CONNECTOR_MIDDLE_LEFT,
   CONNECTOR_CENTER
 } from './Connector';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { color } from 'react-native-reanimated';
 
 export const AXIS_X = 'x';
 export const AXIS_Y = 'y';
@@ -692,6 +694,8 @@ export class DragResizeBlock extends Component {
       return (
         connectorType == 'c' ?         
         <Connector
+          _borderWidth={0.5}
+          _borderColor={"black"}
           zPos={0}
           color={"transparent"}
           radio={0}
@@ -705,6 +709,8 @@ export class DragResizeBlock extends Component {
           onEnd={this.connectorsMap[connectorType].onEnd}
         />:
         <Connector
+        _borderWidth={0.5}
+        _borderColor={"black"}
           zPos={1}
           color={"white"}
           radio={500}

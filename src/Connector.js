@@ -101,6 +101,8 @@ export class Connector extends Component {
       radio,
       color,
       zPos,
+      _borderWidth,
+      _borderColor
     } = this.props;
 
     return (
@@ -113,8 +115,8 @@ export class Connector extends Component {
           top: y,
           width: size,
           height: size,
-          borderWidth: 2,
-          borderColor: 'black',
+          borderWidth: _borderWidth,
+          borderColor: _borderColor,
           backgroundColor: color
         }}
         {...this._panResponder.panHandlers}
@@ -126,6 +128,8 @@ export class Connector extends Component {
 Connector.propTypes = {
   x: PropTypes.number,
   y: PropTypes.number,
+  _borderWidth: PropTypes.number,
+  _borderColor: PropTypes.string,
   radio: PropTypes.number,
   size: PropTypes.oneOfType([
     PropTypes.string,
