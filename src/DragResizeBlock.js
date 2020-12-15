@@ -43,6 +43,8 @@ export class DragResizeBlock extends Component {
       h,
       minW,
       minH,
+      connectorSize,
+      connectorColor
     } = props;
 
     this.state = {
@@ -51,6 +53,8 @@ export class DragResizeBlock extends Component {
       y,
       w: w < minW ? minW : w,
       h: h < minH ? minH : h,
+      connectorSize,
+      connectorColor
     };
 
     /**
@@ -78,7 +82,7 @@ export class DragResizeBlock extends Component {
      */
     this.connectorsMap[CONNECTOR_TOP_MIDDLE] = {
       calculateX: (width) => {
-        return width / 2 - CONNECTOR_SIZE / 2;
+        return width / 2 - connectorSize / 2;
       },
       calculateY: (height) => {
         return 0;
@@ -93,7 +97,7 @@ export class DragResizeBlock extends Component {
      */
     this.connectorsMap[CONNECTOR_TOP_RIGHT] = {
       calculateX: (width) => {
-        return width - CONNECTOR_SIZE;
+        return width - connectorSize;
       },
       calculateY: (height) => {
         return 0;
@@ -108,10 +112,10 @@ export class DragResizeBlock extends Component {
      */
     this.connectorsMap[CONNECTOR_MIDDLE_RIGHT] = {
       calculateX: (width) => {
-        return width - CONNECTOR_SIZE;
+        return width - connectorSize;
       },
       calculateY: (height) => {
-        return height / 2 - CONNECTOR_SIZE / 2;
+        return height / 2 - connectorSize / 2;
       },
       onStart: this.onResizeStart,
       onMove: this.onResizeMR,
@@ -123,10 +127,10 @@ export class DragResizeBlock extends Component {
      */
     this.connectorsMap[CONNECTOR_BOTTOM_RIGHT] = {
       calculateX: (width) => {
-        return width - CONNECTOR_SIZE;
+        return width - connectorSize;
       },
       calculateY: (height) => {
-        return height - CONNECTOR_SIZE;
+        return height - connectorSize;
       },
       onStart: this.onResizeStart,
       onMove: this.onResizeBR,
@@ -138,10 +142,10 @@ export class DragResizeBlock extends Component {
      */
     this.connectorsMap[CONNECTOR_BOTTOM_MIDDLE] = {
       calculateX: (width) => {
-        return width / 2 - CONNECTOR_SIZE / 2;
+        return width / 2 - connectorSize / 2;
       },
       calculateY: (height) => {
-        return height - CONNECTOR_SIZE;
+        return height - connectorSize;
       },
       onStart: this.onResizeStart,
       onMove: this.onResizeBM,
@@ -156,7 +160,7 @@ export class DragResizeBlock extends Component {
         return 0;
       },
       calculateY: (height) => {
-        return height - CONNECTOR_SIZE;
+        return height - connectorSize;
       },
       onStart: this.onResizeStart,
       onMove: this.onResizeBL,
@@ -171,7 +175,7 @@ export class DragResizeBlock extends Component {
         return 0;
       },
       calculateY: (height) => {
-        return height / 2 - CONNECTOR_SIZE / 2;
+        return height / 2 - connectorSize / 2;
       },
       onStart: this.onResizeStart,
       onMove: this.onResizeML,
@@ -183,15 +187,16 @@ export class DragResizeBlock extends Component {
      */
     this.connectorsMap[CONNECTOR_CENTER] = {
       calculateX: (width) => {
-        return width / 2 - CONNECTOR_SIZE / 2;
+        return width / 2 - connectorSize / 2;
       },
       calculateY: (height) => {
-        return height / 2 - CONNECTOR_SIZE / 2;
+        return height / 2 - connectorSize / 2;
       },
       onStart: this.onDragStart,
       onMove: this.onDrag,
       onEnd: this.onDragEnd,
     };
+
   }
 
   /**
@@ -688,6 +693,8 @@ export class DragResizeBlock extends Component {
     const {
       w,
       h,
+      connectorSize,
+      connectorColor
     } = this.state;
 
     return connectors.map((connectorType) => {
@@ -702,21 +709,21 @@ export class DragResizeBlock extends Component {
           key={connectorType}
           type={connectorType}
           size={"100%"}
-          x={CONNECTOR_SIZE/2}
-          y={CONNECTOR_SIZE/2}
+          x={connectorSize/2}
+          y={connectorSize/2}
           onStart={this.connectorsMap[connectorType].onStart}
           onMove={this.connectorsMap[connectorType].onMove}
           onEnd={this.connectorsMap[connectorType].onEnd}
         />:
         <Connector
-        _borderWidth={0.5}
-        _borderColor={"black"}
+          _borderWidth={0.1}
+          _borderColor={"black"}
           zPos={1}
-          color={"white"}
+          color={connectorColor}
           radio={500}
           key={connectorType}
           type={connectorType}
-          size={CONNECTOR_SIZE}
+          size={connectorSize}
           x={this.connectorsMap[connectorType].calculateX(w)}
           y={this.connectorsMap[connectorType].calculateY(h)}
           onStart={this.connectorsMap[connectorType].onStart}
@@ -740,6 +747,7 @@ export class DragResizeBlock extends Component {
       w,
       h,
       isSelected,
+      connectorSize
     } = this.state;
 
     return (
@@ -750,7 +758,7 @@ export class DragResizeBlock extends Component {
           top: y,
           width: w,
           height: h,
-          padding: CONNECTOR_SIZE / 2,
+          padding: connectorSize / 2,
           zIndex: isSelected ? zIndex + 1 : zIndex,
         }}
       >
@@ -781,6 +789,8 @@ DragResizeBlock.defaultProps = {
   h: 100,
   minW: 50,
   minH: 50,
+  connectorSize: 10,
+  connectorColor: "white",
   axis: AXIS_ALL,
   limitation: {
     x: 0,
@@ -820,6 +830,8 @@ DragResizeBlock.propTypes = {
   h: PropTypes.number,
   minW: PropTypes.number,
   minH: PropTypes.number,
+  connectorSize: PropTypes.number,
+  connectorColor: PropTypes.string,
   zIndex: PropTypes.number,
   axis: PropTypes.oneOf([
     AXIS_X,
